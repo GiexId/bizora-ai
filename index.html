@@ -1,0 +1,483 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d1b">
+  <meta name="description" content="Bizora AI - Your Business. Your AI Workforce. Platform asisten AI untuk otomatisasi bisnis.">
+  <title>Bizora AI — Your Business, Your AI Workforce</title>
+  <style>
+    :root {
+      --bg: #080d1b;
+      --panel: #10182b;
+      --blue: #5487ff;
+      --purple: #9570ff;
+      --text: #f5f7ff;
+      --muted: #9ba8c2;
+      --border: rgba(255,255,255,.09);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, system-ui, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(8,13,27,.92);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 850;
+      letter-spacing: -1px;
+    }
+
+    .logo span { color: #7798ff; }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 21px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      background: linear-gradient(120deg,var(--blue),var(--purple));
+      color: white;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+    }
+
+    .hero {
+      padding: 105px 0 85px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at 50% 0%,rgba(75,106,255,.20),transparent 55%);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 15px;
+      border: 1px solid rgba(110,140,255,.3);
+      border-radius: 30px;
+      color: #aebfff;
+      font-size: 12px;
+      margin-bottom: 25px;
+      background: rgba(65,90,190,.10);
+    }
+
+    h1 {
+      font-size: clamp(38px,7vw,70px);
+      line-height: 1.08;
+      letter-spacing: -3px;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .gradient {
+      background: linear-gradient(100deg,#70a1ff,#b28aff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 25px auto 30px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .preview {
+      margin: 65px auto 0;
+      max-width: 900px;
+      padding: 12px;
+      background: linear-gradient(135deg,#243967,#151e38,#49316e);
+      border-radius: 18px;
+      box-shadow: 0 25px 90px rgba(40,75,180,.18);
+    }
+
+    .dashboard {
+      background: #0d1425;
+      border-radius: 11px;
+      padding: 22px;
+      text-align: left;
+      min-height: 250px;
+    }
+
+    .dash-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 17px;
+      margin-bottom: 20px;
+    }
+
+    .status {
+      color: #69e6a2;
+      font-size: 12px;
+    }
+
+    .dash-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 12px;
+    }
+
+    .dash-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 17px;
+    }
+
+    .dash-card small { color: var(--muted); }
+    .dash-card h3 { margin-top: 8px; font-size: 21px; }
+
+    section { padding: 85px 0; }
+
+    .section-heading {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 45px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(28px,4vw,42px);
+      letter-spacing: -1px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    .agents {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
+
+    .agent {
+      background: linear-gradient(145deg,#121c33,#0c1323);
+      border: 1px solid var(--border);
+      padding: 25px;
+      border-radius: 15px;
+      transition: .25s;
+    }
+
+    .agent:hover {
+      transform: translateY(-5px);
+      border-color: #617ff0;
+    }
+
+    .agent-icon {
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      background: rgba(95,120,255,.15);
+      border-radius: 12px;
+      font-size: 22px;
+      margin-bottom: 18px;
+    }
+
+    .agent p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 9px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      padding: 25px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      border-radius: 14px;
+    }
+
+    .feature p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 65px 25px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: radial-gradient(ellipse at top,rgba(85,105,255,.2),#10182b 75%);
+    }
+
+    .cta h2 { font-size: 35px; }
+    .cta p { color: var(--muted); margin: 15px auto 25px; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media(max-width:700px) {
+      .nav-links { display: none; }
+      .nav-cta { padding: 10px 13px; }
+      .hero { padding: 75px 0 55px; }
+      h1 { letter-spacing: -1.5px; }
+      .agents { grid-template-columns: repeat(2,1fr); }
+      .dash-grid { grid-template-columns: 1fr; }
+      .features { grid-template-columns: 1fr; }
+      section { padding: 65px 0; }
+    }
+
+    @media(max-width:420px) {
+      .agents { grid-template-columns: 1fr; }
+      .logo { font-size: 21px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav class="container">
+    <a href="#" class="logo">Bizora<span>AI.</span></a>
+
+    <div class="nav-links">
+      <a href="#agents">AI Agents</a>
+      <a href="#features">Fitur</a>
+      <a href="#about">Tentang</a>
+    </div>
+
+    <a href="#start" class="btn nav-cta">Mulai Sekarang</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <span class="tag">✦ The Future of Business Automation</span>
+
+      <h1>
+        Your Business.<br>
+        <span class="gradient">Your AI Workforce.</span>
+      </h1>
+
+      <p>
+        Kenalkan cara baru mengelola bisnis.
+        Berbagai AI Agent spesialis siap membantu pekerjaan,
+        menghemat waktu, dan meningkatkan produktivitas bisnis Anda.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#start" class="btn">Jelajahi Bizora AI →</a>
+        <a href="#agents" class="btn btn-outline">Kenali AI Agent</a>
+      </div>
+
+      <div class="preview">
+        <div class="dashboard">
+          <div class="dash-top">
+            <strong>Bizora AI Workspace</strong>
+            <span class="status">● Platform Preview</span>
+          </div>
+
+          <p style="color:#aab7d1;margin-bottom:18px">
+            Selamat datang di pusat kendali bisnis Anda.
+          </p>
+
+          <div class="dash-grid">
+            <div class="dash-card">
+              <small>AI Agents</small>
+              <h3>07</h3>
+            </div>
+            <div class="dash-card">
+              <small>Automation</small>
+              <h3>Ready</h3>
+            </div>
+            <div class="dash-card">
+              <small>Workspace</small>
+              <h3>Unified</h3>
+            </div>
+          </div>
+
+          <p style="font-size:11px;color:#71809c;margin-top:17px">
+            Illustrative dashboard preview — fitur sedang dalam pengembangan.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="agents">
+    <div class="container">
+      <div class="section-heading">
+        <span class="tag">YOUR DIGITAL WORKFORCE</span>
+        <h2>Meet Your <span class="gradient">AI Agents</span></h2>
+        <p>
+          Satu platform. Banyak asisten spesialis.
+          Setiap agent dirancang untuk membantu kebutuhan bisnis berbeda.
+        </p>
+      </div>
+
+      <div class="agents">
+        <div class="agent">
+          <div class="agent-icon">💬</div>
+          <h3>Customer Agent</h3>
+          <p>Membantu menjawab pertanyaan dan melayani pelanggan.</p>
+        </div>
+
+        <div class="agent">
+          <div class="agent-icon">🛒</div>
+          <h3>Sales Agent</h3>
+          <p>Membantu proses penjualan dan pengelolaan pesanan.</p>
+        </div>
+
+        <div class="agent">
+          <div class="agent-icon">💰</div>
+          <h3>Finance Agent</h3>
+          <p>Membantu pencatatan transaksi dan pengelolaan tagihan.</p>
+        </div>
+
+        <div class="agent">
+          <div class="agent-icon">📦</div>
+          <h3>Inventory Agent</h3>
+          <p>Membantu memantau stok dan persediaan barang.</p>
+        </div>
+
+        <div class="agent">
+          <div class="agent-icon">📢</div>
+          <h3>Marketing Agent</h3>
+          <p>Membantu membuat ide konten dan strategi pemasaran.</p>
+        </div>
+
+        <div class="agent">
+          <div class="agent-icon">📊</div>
+          <h3>Analytics Agent</h3>
+          <p>Membantu menganalisis data dan laporan bisnis.</p>
+        </div>
+
+        <div class="agent">
+          <div class="agent-icon">📋</div>
+          <h3>Admin Agent</h3>
+          <p>Membantu pekerjaan administrasi harian.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <div class="section-heading">
+        <span class="tag">ONE CONNECTED PLATFORM</span>
+        <h2>Everything Your Business Needs</h2>
+        <p>Kelola asisten AI dan aktivitas bisnis dari satu tempat.</p>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <h3>✦ Multi-Agent Workspace</h3>
+          <p>Kelola berbagai asisten spesialis dalam satu dashboard.</p>
+        </div>
+        <div class="feature">
+          <h3>✦ Smart Automation</h3>
+          <p>Rencanakan otomatisasi tugas bisnis yang berulang.</p>
+        </div>
+        <div class="feature">
+          <h3>✦ Business Knowledge</h3>
+          <p>Bangun pengetahuan AI berdasarkan informasi bisnis Anda.</p>
+        </div>
+        <div class="feature">
+          <h3>✦ Business Analytics</h3>
+          <p>Pantau aktivitas dan dapatkan wawasan dari data bisnis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="cta" id="start">
+        <span class="tag">BUILD A SMARTER BUSINESS</span>
+        <h2>Let AI Work With You.</h2>
+        <p>
+          Masa depan bisnis dimulai dengan pekerjaan yang lebih cerdas.
+          Bergabunglah dengan perjalanan Bizora AI.
+        </p>
+        <a href="mailto:hello@bizora.ai" class="btn">
+          Hubungi Bizora AI →
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="logo">Bizora<span>AI.</span></div>
+    <p style="margin-top:10px">
+      Your Business. Your AI Workforce.
+    </p>
+    <p style="margin-top:12px">
+      © 2026 Bizora AI. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+</body>
+  </html>
+            
